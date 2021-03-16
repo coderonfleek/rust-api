@@ -2,6 +2,8 @@
 
 #[macro_use] extern crate rocket;
 
+//use std:{env, net::SocketAddr};
+
 #[get("/")]
 fn index() -> &'static str {
     "Welcome to the Rust API"
@@ -15,3 +17,7 @@ fn greet(name: String) -> String {
 fn main() {
     rocket::ignite().mount("/", routes![index,greet]).launch();
 }
+
+/* fn get_environment_port() -> u16 {
+    env::var("PORT").ok().and_then(|port| port.parse().ok()).unwrap_or_else(|| 8000)
+} */
